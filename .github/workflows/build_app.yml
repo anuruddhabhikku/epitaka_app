@@ -9,7 +9,7 @@ on:
       build_android:
         description: 'Build Android (APK + AAB)'
         type: boolean
-        default: true
+        default: false
       build_ios:
         description: 'Build iOS (requires macOS runner + signing setup)'
         type: boolean
@@ -17,11 +17,11 @@ on:
       build_windows:
         description: 'Build Windows (x64)'
         type: boolean
-        default: true
+        default: false
       build_macos:
         description: 'Build macOS'
         type: boolean
-        default: true
+        default: false
       build_linux:
         description: 'Build Linux (x64)'
         type: boolean
@@ -551,7 +551,7 @@ jobs:
   build-linux:
     name: Build Linux
     if: github.event_name == 'push' || github.event.inputs.build_linux == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
